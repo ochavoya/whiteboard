@@ -24,6 +24,7 @@ interface WhiteBoardSection {
 interface WhiteBoardItem {
   id: number;
   sectionId: number;
+  author: string;
   title: string;
   detail: string;
   createdOn: Date;
