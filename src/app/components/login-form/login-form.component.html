@@ -1,1 +1,27 @@
-<p>login form works!</p>
+<span class="container-fluid">
+  <input
+    [(ngModel)]="username"
+    mdInput
+    name="username"
+    placeholder="username"
+    required
+  />
+
+  <input
+    [(ngModel)]="password"
+    type="password"
+    mdInput
+    name="password"
+    placeholder="password"
+    required
+  />
+
+  <button
+    type="button"
+    class="btn btn-danger navbar-btn"
+    (click)="login()"
+    [routerLink]="['']"
+  >
+    login
+  </button>
+</span>
