@@ -1,0 +1,9 @@
+
+<div *ngIf="isActive()">
+    <h4 (click)="toggleDetail()"> {{item.title}}</h4>
+    <div *ngIf="detailVisible">
+        {{item.detail}}<br>
+        created on: {{item.createdOn}}<br>
+        expires on: {{item.expiresOn}}
+    </div>
+</div>

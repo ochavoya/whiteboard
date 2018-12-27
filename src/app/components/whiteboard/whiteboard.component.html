@@ -1,0 +1,22 @@
+<div class="container">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <h2><i>XP-Whiteboard</i></h2>
+          </div>
+          <button type="button" class="btn btn-danger navbar-btn" *ngFor="let x of headlines" (click)="selectBoard(x.id)">{{x.title}}</button>
+          <span *ngIf="board"><button type="button" class="btn btn-danger navbar-btn" [routerLink]="getCreatePath()">Create Item</button></span>
+        </div>
+      </nav>
+</div>
+<div class="container">
+      <div *ngIf="board">
+        <table class="table">
+          <tr>
+            <td *ngFor="let x of columns">
+              <app-whiteboard-column [column]="x"></app-whiteboard-column>
+            </td>
+          </tr>
+        </table>
+      </div>
+</div>

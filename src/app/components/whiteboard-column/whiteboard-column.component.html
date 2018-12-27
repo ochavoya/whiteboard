@@ -1,0 +1,14 @@
+<table class="table">
+    <thead>
+      <tr (click)="toggleDetail()"><h3>{{column.title}}</h3></tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="showDetail">{{column.detail}}</tr>
+    </tbody>
+</table>
+<table class="table" *ngIf="column.sections.length">
+      <tr *ngFor="let x of column.sections ">
+          <th><app-whiteboard-section [section]="x"></app-whiteboard-section></th>
+      </tr>
+</table>
+    
