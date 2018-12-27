@@ -11,12 +11,15 @@
 </div>
 <div class="container">
       <div *ngIf="board">
-        <table class="table">
-          <tr>
-            <td *ngFor="let x of columns">
+        <div class="row" *ngIf="columns.length == 4">
+          <div *ngFor="let x of columns" class="col-md-3">
               <app-whiteboard-column [column]="x"></app-whiteboard-column>
-            </td>
-          </tr>
-        </table>
+          </div>
+        </div>
+        <div class="row" *ngIf="columns.length == 3">
+            <div *ngFor="let x of columns" class="col-md-4">
+                <app-whiteboard-column [column]="x"></app-whiteboard-column>
+            </div>
+        </div>
       </div>
 </div>

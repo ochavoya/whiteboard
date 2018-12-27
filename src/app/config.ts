@@ -1,7 +1,5 @@
-
 const STAND_UP = 1;
 const RETRO = 2;
-
 
 // Sections 1 to 10
 const LOGISTICS = 10;
@@ -10,7 +8,7 @@ const logisticsSections: WhiteBoardSection[] =[
         id: 1,
         columnId: LOGISTICS,
         title: "PTO",
-        detail: "i.e. 'Personal Time Out' [you know how much we love to make our lives miserable having to memorize acronyms].",
+        detail: "i.e. 'Personal Time Out'",
         items:[]
     },
 ];
@@ -41,7 +39,7 @@ const newsSections=[
         id: 21,
         columnId: THE_NEWS,
         title: "Finances",
-        detail: "Just in case that you are rich :)",
+        detail: "Just in case that you are rich...",
         items:[]
     },
 
@@ -80,9 +78,6 @@ const NETURAL_FACE = 60;
 // sections 81-90
 const SAD_FACE = 70;
 
-
-
-
 export class Configuration {
 
     private static ID = 0;
@@ -106,16 +101,12 @@ export class Configuration {
         }
     ];
 
-
-
-
     public static columns: WhiteBoardColumn[] = [
 
         // ===================================
         //        STAND_UP
         // ===================================
-
-
+        
         {
             id: LOGISTICS,
             whiteBoardId: STAND_UP,
