@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AuthenticationService } from './services/authentication.service';
+import { WhiteBoardItem } from './model/whiteboard';
 
 @NgModule({
   declarations: [

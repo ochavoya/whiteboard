@@ -1,10 +1,10 @@
-interface WhiteBoardHeadline {
+export interface WhiteBoardHeadline {
   id: number;
   title: string;
   detail: string;
 }
 
-interface WhiteBoardColumn {
+export interface WhiteBoardColumn {
   id: number;
   whiteBoardId: number;
   icon: string;
@@ -13,7 +13,7 @@ interface WhiteBoardColumn {
   sections: WhiteBoardSection[];
 }
 
-interface WhiteBoardSection {
+export interface WhiteBoardSection {
   id: number;
   columnId: number;
   title: string;
@@ -21,7 +21,7 @@ interface WhiteBoardSection {
   items: WhiteBoardItem[];
 }
 
-interface WhiteBoardItem {
+export interface WhiteBoardItem {
   id: number;
   sectionId: number;
   author: string;
@@ -32,7 +32,7 @@ interface WhiteBoardItem {
   active: boolean;
 }
 
-interface ItemDTO {
+export interface ItemDTO {
   sectionId: number;
   title: string;
   detail: string;
@@ -40,18 +40,18 @@ interface ItemDTO {
   expiresOn: Date;
 }
 
-interface RegistrationDTO {
+export interface RegistrationDTO {
   username: string;
   password: string;
   email: string;
 }
 
-interface LoginDTO {
+export interface LoginDTO {
   username: string;
   password: string;
 }
 
-interface LoginResponse {
+export interface LoginResponse {
   username: string;
   success: boolean;
 }
