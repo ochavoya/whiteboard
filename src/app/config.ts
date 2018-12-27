@@ -77,6 +77,8 @@ const HAPPY_FACE = 50;
 const NETURAL_FACE = 60;
 // sections 81-90
 const SAD_FACE = 70;
+// sections 91-100
+const ACTIONS = 80;
 
 export class Configuration {
   private static ID = 0;
@@ -162,6 +164,14 @@ export class Configuration {
       icon: 'sad_face',
       title: 'SAD FACE',
       detail: 'What has not been cool, OK? >:(',
+      sections: []
+    },
+    {
+      id: ACTIONS,
+      whiteBoardId: RETRO,
+      icon: 'actions',
+      title: 'ACTIONS',
+      detail: 'What are we going to do about it?',
       sections: []
     }
   ];
