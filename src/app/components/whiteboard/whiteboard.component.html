@@ -1,25 +1,43 @@
 <div class="container">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <h2><i>XP-Whiteboard</i></h2>
-          </div>
-          <button type="button" class="btn btn-danger navbar-btn" *ngFor="let x of headlines" (click)="selectBoard(x.id)">{{x.title}}</button>
-          <span *ngIf="board"><button type="button" class="btn btn-danger navbar-btn" [routerLink]="getCreatePath()">Create Item</button></span>
-        </div>
-      </nav>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2><i>XP-Whiteboard</i></h2>
+      </div>
+      <button
+        type="button"
+        class="btn btn-danger navbar-btn"
+        *ngFor="let x of headlines"
+        (click)="selectBoard(x.id)"
+      >
+        {{ x.title }}
+      </button>
+      <span *ngIf="username">
+        <span *ngIf="board"
+          ><button
+            type="button"
+            class="btn btn-danger navbar-btn"
+            [routerLink]="getCreatePath()"
+          >
+            Create Item
+          </button></span
+        >
+      </span>
+      <span *ngIf="username == null"> <app-login-form></app-login-form> </span>
+    </div>
+  </nav>
 </div>
 <div class="container">
-      <div *ngIf="board">
-        <div class="row" *ngIf="columns.length == 4">
-          <div *ngFor="let x of columns" class="col-md-3">
-              <app-whiteboard-column [column]="x"></app-whiteboard-column>
-          </div>
-        </div>
-        <div class="row" *ngIf="columns.length == 3">
-            <div *ngFor="let x of columns" class="col-md-4">
-                <app-whiteboard-column [column]="x"></app-whiteboard-column>
-            </div>
-        </div>
+  <div *ngIf="board">
+    <div class="row" *ngIf="columns.length == 4">
+      <div *ngFor="let x of columns" class="col-md-3">
+        <app-whiteboard-column [column]="x"></app-whiteboard-column>
       </div>
+    </div>
+    <div class="row" *ngIf="columns.length == 3">
+      <div *ngFor="let x of columns" class="col-md-4">
+        <app-whiteboard-column [column]="x"></app-whiteboard-column>
+      </div>
+    </div>
+  </div>
 </div>

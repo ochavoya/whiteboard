@@ -39,3 +39,19 @@ interface ItemDTO {
   createdOn: Date;
   expiresOn: Date;
 }
+
+interface RegistrationDTO {
+  username: string;
+  password: string;
+  email: string;
+}
+
+interface LoginDTO {
+  username: string;
+  password: string;
+}
+
+interface LoginResponse {
+  username: string;
+  success: boolean;
+}
