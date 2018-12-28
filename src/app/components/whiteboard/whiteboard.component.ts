@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { WhiteBoardHeadline, WhiteBoardColumn } from '../../model/whiteboard';
 
 @Component({
   selector: 'app-whiteboard',

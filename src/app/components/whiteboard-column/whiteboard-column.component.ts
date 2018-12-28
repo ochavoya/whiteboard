@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WhiteBoardColumn } from '../../model/whiteboard';
 
 @Component({
   selector: 'app-whiteboard-column',
@@ -12,13 +13,11 @@ export class WhiteboardColumnComponent implements OnInit {
   showDetail = false;
 
   toggleDetail() {
-    if( this.column.detail == null || this.column.detail == "") return;
+    if (this.column.detail == null || this.column.detail === '') { return; }
     this.showDetail = !this.showDetail;
   }
 
-  constructor() { }
-  
-  ngOnInit() {
-  
-  }
+  constructor() {}
+
+  ngOnInit() {}
 }

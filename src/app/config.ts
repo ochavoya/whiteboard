@@ -1,3 +1,6 @@
+import {WhiteBoardHeadline, WhiteBoardColumn, WhiteBoardSection} from './model/whiteboard';
+import { from } from 'rxjs';
+
 const STAND_UP = 1;
 const RETRO = 2;
 

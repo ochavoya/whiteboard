@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { RestClientService } from './rest-client.service';
-import { rootRenderNodes } from '@angular/core/src/view';
-
+import { LoginDTO, RegistrationDTO, LoginResponse } from '../model/whiteboard';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
   private _username = null;
   private _authenticated = false;
 
@@ -22,9 +20,8 @@ export class AuthenticationService {
     this._authenticated = false;
   }
 
-  constructor(private restService: RestClientService) { }
-  registerUser(username: string, password: string, email: string) {
-  }
+  constructor(private restService: RestClientService) {}
+  registerUser(username: string, password: string, email: string) {}
   register(registerDTO: RegistrationDTO) {
     return true;
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WhiteBoardSection } from '../../model/whiteboard';
 
 @Component({
   selector: 'app-whiteboard-section',

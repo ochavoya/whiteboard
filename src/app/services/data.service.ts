@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestClientService } from './rest-client.service';
 import { Configuration } from '../config';
 import { Observable } from 'rxjs';
+import { WhiteBoardItem, ItemDTO, WhiteBoardHeadline } from '../model/whiteboard';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +17,8 @@ export class DataService {
 
   getColumns(index) {
     let result = Configuration.columns.slice();
-    result =  result.filter(x => x.whiteBoardId == index);
+    result = result.filter(x => x.whiteBoardId == index);
     return result;
-  }
-
-  scanColumns() {
-    let result = {};
-    for( let x of Configuration.columns) {
-    }
   }
 
   createItem(rawValue): Observable<WhiteBoardItem> {
