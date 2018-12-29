@@ -26,14 +26,14 @@ export class AuthenticationService {
     return true;
   }
 
-  login(loginDTO: LoginDTO): LoginResponse {
-    if (loginDTO.username === 'root') {
+  login(username: string, password: string): string {
+    if (username === 'root') {
       this._username = 'root';
       this._authenticated = true;
-      return { username: 'root', success: true };
+      return 'root';
     }
     this._username = null;
     this._authenticated = false;
-    return { username: loginDTO.username, success: false };
+    return null;
   }
 }

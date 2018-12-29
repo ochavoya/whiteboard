@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login-form',
@@ -6,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
+
+  @Output()
+  loginEvent: EventEmitter<string> = new EventEmitter<string>();
+  @Input()
+  loginEventHandler;
   username: string;
   password: string;
 
-  login() {}
-  constructor() {}
+  login() { this.loginEvent.emit(this.authenticationService.login(this.username, this. password)); }
+  constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.loginEvent.addListener('loginEvent', this.loginEventHandler);
+  }
 }

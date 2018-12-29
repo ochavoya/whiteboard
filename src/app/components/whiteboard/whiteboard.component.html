@@ -12,18 +12,26 @@
       >
         {{ x.title }}
       </button>
-      <span *ngIf="username">
-        <span *ngIf="board"
-          ><button
-            type="button"
-            class="btn btn-danger navbar-btn"
-            [routerLink]="getCreatePath()"
-          >
-            Create Item
-          </button></span
-        >
-      </span>
-      <span *ngIf="username == null"> <app-login-form></app-login-form> </span>
+      <button
+        *ngIf="board && token"
+        type="button"
+        class="btn btn-danger navbar-btn"
+        [routerLink]="getCreatePath()"
+      >
+        Create Item
+      </button>
+      <button
+        *ngIf="board && token"
+        type="button"
+        class="btn btn-danger navbar-btn"
+        (click)="logout()"
+      >
+        logout
+      </button>
+      <app-login-form
+        *ngIf="token == null"
+        (loginEvent)="setToken($event)"
+      ></app-login-form>
     </div>
   </nav>
 </div>

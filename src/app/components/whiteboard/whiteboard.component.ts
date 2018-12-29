@@ -9,10 +9,19 @@ import { WhiteBoardHeadline, WhiteBoardColumn } from '../../model/whiteboard';
   styleUrls: ['./whiteboard.component.css']
 })
 export class WhiteboardComponent implements OnInit {
-  username;
+  token;
   board = 0;
   headlines: WhiteBoardHeadline[] = [];
   columns: WhiteBoardColumn[] = [];
+
+  setToken(token) {
+    this.token = token;
+  }
+
+  logout() {
+    this.token = null;
+    this.authenticationService.logout();
+  }
 
   getCreatePath() {
     const path = [`create/${this.board}`];
@@ -26,7 +35,7 @@ export class WhiteboardComponent implements OnInit {
 
   ngOnInit() {
     this.headlines = this.dataService.getHeadLines();
-    this.username = this.authenticationService.username;
+    this.token = this.authenticationService.username;
   }
 
   selectBoard(index) {
