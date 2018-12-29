@@ -1,4 +1,8 @@
-import {WhiteBoardHeadline, WhiteBoardColumn, WhiteBoardSection} from './model/whiteboard';
+import {
+  WhiteBoardHeadline,
+  WhiteBoardColumn,
+  WhiteBoardSection
+} from './model/whiteboard';
 import { from } from 'rxjs';
 
 const STAND_UP = 1;
@@ -12,6 +16,13 @@ const logisticsSections: WhiteBoardSection[] = [
     columnId: LOGISTICS,
     title: 'PTO',
     detail: 'i.e. \'Personal Time Out\'',
+    items: []
+  },
+  {
+    id: 5,
+    columnId: LOGISTICS,
+    title: 'Rituals',
+    detail: 'Our way of life...',
     items: []
   }
 ];
@@ -27,7 +38,7 @@ const helpSections = [
     items: []
   },
   {
-    id: 12,
+    id: 15,
     columnId: HELP,
     title: 'Resources',
     detail: 'Sources of relevant information.',
@@ -39,7 +50,14 @@ const helpSections = [
 const THE_NEWS = 30;
 const newsSections = [
   {
-    id: 21,
+    id: 22,
+    columnId: THE_NEWS,
+    title: 'New Faces',
+    detail: 'Welcome!',
+    items: []
+  },
+  {
+    id: 24,
     columnId: THE_NEWS,
     title: 'Finances',
     detail: 'Just in case that you are rich...',
@@ -47,7 +65,7 @@ const newsSections = [
   },
 
   {
-    id: 22,
+    id: 27,
     columnId: THE_NEWS,
     title: 'Politics',
     detail: 'What\'s new in the NWO?',
@@ -66,7 +84,7 @@ const futureSections = [
     items: []
   },
   {
-    id: 32,
+    id: 35,
     columnId: THE_FUTURE,
     title: 'Dead lines',
     detail: 'What we have coming our way.',

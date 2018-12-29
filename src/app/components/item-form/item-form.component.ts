@@ -9,12 +9,7 @@ import { of } from 'rxjs';
   styleUrls: ['./item-form.component.css']
 })
 export class ItemFormComponent implements OnInit {
-
-  formatDate(date: Date): string {
-    return (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear()
-  }
-
-  submitted: boolean = false;
+  submitted = false;
   now = new Date();
   board = 0;
   sections = null;
@@ -22,40 +17,50 @@ export class ItemFormComponent implements OnInit {
   title: string;
   detail: string;
   createdOn: string = this.formatDate(this.now);
-  expiresOn: string = this.formatDate(new Date(this.now.setDate(this.now.getDate() + 1)));
+  expiresOn: string = this.formatDate(
+    new Date(this.now.setDate(this.now.getDate() + 1))
+  );
 
+  formatDate(date: Date): string {
+    return (
+      date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear()
+    );
+  }
 
   processColumns() {
     this.sections = [];
-    let columns = this.dataService.getColumns(this.board);
-    for (let x of columns) {
-      for (let y of x.sections) {
-        this.sections.push({ 'id': y.id, 'title': y.title });
+    const columns = this.dataService.getColumns(this.board);
+    for (const x of columns) {
+      for (const y of x.sections) {
+        this.sections.push({ id: y.id, title: y.title });
       }
     }
   }
 
   submit() {
-    if (this.submitted == true) return;
-    if( this.sectionId == 0 ) return;
+    if (this.submitted === true) { return; }
+    if (this.sectionId === 0) { return; }
 
-    let rawValue = {
-      'boardId' : this.board,
-      'sectionId' : this.sectionId,
-      'title': this.title,
-      'detail': this.detail,
-      'createdOn': new Date(this.createdOn),
-      'expiresOn': new Date(this.expiresOn)
+    const rawValue = {
+      boardId: this.board,
+      sectionId: this.sectionId,
+      title: this.title,
+      detail: this.detail,
+      createdOn: new Date(this.createdOn),
+      expiresOn: new Date(this.expiresOn)
     };
     this.dataService.createItem(rawValue);
   }
 
-  constructor(private dataService: DataService,
-    private activatedRoute: ActivatedRoute) {
-  }
+  constructor(
+    private dataService: DataService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => this.board = params['board']);
+    this.activatedRoute.params.subscribe(
+      params => (this.board = params['board'])
+    );
     this.processColumns();
   }
 }
