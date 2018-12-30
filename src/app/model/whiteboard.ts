@@ -24,7 +24,7 @@ export interface WhiteBoardSection {
 export interface WhiteBoardItem {
   id: number;
   sectionId: number;
-  author: string;
+  user: string;
   title: string;
   detail: string;
   createdOn: Date;
@@ -33,6 +33,7 @@ export interface WhiteBoardItem {
 }
 
 export interface ItemDTO {
+  user: string;
   sectionId: number;
   title: string;
   detail: string;

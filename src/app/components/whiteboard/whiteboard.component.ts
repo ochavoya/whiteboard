@@ -41,5 +41,6 @@ export class WhiteboardComponent implements OnInit {
   selectBoard(index) {
     this.board = index;
     this.columns = this.dataService.getColumns(index);
+    console.log(this.columns);
   }
 }

@@ -94,12 +94,48 @@ const futureSections = [
 
 // sections 51-60
 const HAPPY_FACE = 50;
+const happyFaceSections = [
+  {
+    id: 51,
+    columnId: HAPPY_FACE,
+    title: 'Tell us!',
+    detail: null,
+    items: []
+  }
+];
 // sections 71-80
 const NETURAL_FACE = 60;
+const neutralFaceSections = [
+  {
+    id: 71,
+    columnId: NETURAL_FACE,
+    title: 'Uhmm...',
+    detail: null,
+    items: []
+  }
+];
 // sections 81-90
 const SAD_FACE = 70;
+const sadFaceSections = [
+  {
+    id: 81,
+    columnId: SAD_FACE,
+    title: 'What is it?!',
+    detail: null,
+    items: []
+  }
+];
 // sections 91-100
 const ACTIONS = 80;
+const actionsSections = [
+  {
+    id: 91,
+    columnId: ACTIONS,
+    title: 'I know!',
+    detail: null,
+    items: []
+  }
+];
 
 export class Configuration {
   private static ID = 0;
@@ -164,36 +200,36 @@ export class Configuration {
     {
       id: HAPPY_FACE,
       whiteBoardId: RETRO,
-      icon: 'happy_face',
-      title: 'HAPPY FACE',
+      icon: 'happy.jpeg',
+      title: null,
       detail: 'What has been great!',
-      sections: []
+      sections: happyFaceSections
     },
 
     {
       id: NETURAL_FACE,
       whiteBoardId: RETRO,
-      icon: 'neutral_face',
-      title: 'NEUTRAL FACE',
+      icon: 'neutral.jpeg',
+      title: null,
       detail: 'What has been \'just fine\'',
-      sections: []
+      sections: neutralFaceSections
     },
 
     {
       id: SAD_FACE,
       whiteBoardId: RETRO,
-      icon: 'sad_face',
-      title: 'SAD FACE',
+      icon: 'sad.jpeg',
+      title: null,
       detail: 'What has not been cool, OK? >:(',
-      sections: []
+      sections: sadFaceSections
     },
     {
       id: ACTIONS,
       whiteBoardId: RETRO,
-      icon: 'actions',
+      icon: null,
       title: 'ACTIONS',
       detail: 'What are we going to do about it?',
-      sections: []
+      sections: actionsSections
     }
   ];
 }

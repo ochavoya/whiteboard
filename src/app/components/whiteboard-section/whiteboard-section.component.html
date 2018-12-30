@@ -7,11 +7,11 @@
     </tbody>
   </table>
   <div class="table-responsive">
-      <table class="table" *ngIf="section.items.length">
-        <tr *ngFor="let x of section.items">
-          <app-whiteboard-item [item]="x"></app-whiteboard-item>
-        </tr>
-      </table>
   </div>
+  <table class="table" *ngIf="section.items.length">
+    <tr *ngFor="let x of section.items">
+      <app-whiteboard-item [item]="x"></app-whiteboard-item>
+    </tr>
+  </table>
   
   
