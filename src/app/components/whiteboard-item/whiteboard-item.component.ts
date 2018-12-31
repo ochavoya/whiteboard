@@ -12,9 +12,6 @@ export class WhiteboardItemComponent implements OnInit {
 
   detailVisible = false;
 
-  isActive(): boolean {
-    return (this.item.active = this.item.expiresOn > this.item.createdOn);
-  }
 
   toggleDetail() {
     this.detailVisible = !this.detailVisible;

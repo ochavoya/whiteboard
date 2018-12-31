@@ -38,15 +38,18 @@ export class ItemFormComponent implements OnInit {
   }
 
   submit() {
-    if (this.submitted === true) { return; }
-    if (this.sectionId === 0) { return; }
+    if (this.submitted == true) {
+      return;
+    }
+    if (this.sectionId == 0) {
+      return;
+    }
 
     const rawValue = {
       boardId: this.board,
       sectionId: this.sectionId,
       title: this.title,
       detail: this.detail,
-      createdOn: new Date(this.createdOn),
       expiresOn: new Date(this.expiresOn)
     };
     this.dataService.createItem(rawValue);

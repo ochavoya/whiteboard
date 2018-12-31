@@ -1,7 +1,5 @@
-<div *ngIf="isActive()">
-  <p (click)="toggleDetail()">{{ item.title }}</p>
-  <div *ngIf="detailVisible">
-    {{ item.detail }}<br />
-    expires on: {{ formatDate(item.expiresOn) }}
-  </div>
+<p (click)="toggleDetail()">{{ item.title }}</p>
+<div *ngIf="detailVisible">
+  {{ item.detail }}<br />
+  expires on: {{ formatDate(item.expiresOn) }}
 </div>

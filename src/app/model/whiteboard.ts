@@ -27,9 +27,7 @@ export interface WhiteBoardItem {
   user: string;
   title: string;
   detail: string;
-  createdOn: Date;
   expiresOn: Date;
-  active: boolean;
 }
 
 export interface ItemDTO {
@@ -37,7 +35,6 @@ export interface ItemDTO {
   sectionId: number;
   title: string;
   detail: string;
-  createdOn: Date;
   expiresOn: Date;
 }
 
