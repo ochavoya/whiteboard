@@ -47,8 +47,8 @@ export class DataService {
     console.log(items);
     items.push({
       id: null,
+      boardId: rawValue.boardId,
       sectionId: rawValue.sectionId,
-      user: this.authenticationService.username,
       title: rawValue.title,
       detail: rawValue.detail,
       expiresOn: rawValue.expiresOn

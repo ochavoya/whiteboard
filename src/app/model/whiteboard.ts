@@ -23,8 +23,8 @@ export interface WhiteBoardSection {
 
 export interface WhiteBoardItem {
   id: number;
+  boardId: number;
   sectionId: number;
-  user: string;
   title: string;
   detail: string;
   expiresOn: Date;
