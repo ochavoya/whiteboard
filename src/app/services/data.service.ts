@@ -55,7 +55,7 @@ export class DataService {
 
   private createItemDTO(rawValue): ItemDTO {
     const result: ItemDTO = {
-      user: this.authenticationService.username,
+      token: this.authenticationService.username,
       sectionId: rawValue['sectionId'],
       title: rawValue['title'],
       detail: rawValue['detail'],

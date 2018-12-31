@@ -1,8 +1,8 @@
 <div *ngIf="isActive()">
-  <div class="tooltip">    
+  <div class="tooltip"> 
+      <span class="tooltiptext">{{ item.author }}</span>
   </div>
-  <p (click)="toggleDetail()">{{ item.title }}</p>
-    <span class="tooltiptext">{{ item.author }}</span>
+    <p (click)="toggleDetail()">{{ item.title }}</p>
   <div *ngIf="detailVisible">
     {{ item.detail }}<br />
     created on: {{ item.createdOn }}<br />

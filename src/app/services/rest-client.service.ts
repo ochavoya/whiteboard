@@ -12,6 +12,7 @@ export class RestClientService {
   create( itemDTO: ItemDTO): Observable<WhiteBoardItem> {
     return new Observable<WhiteBoardItem>()
   }
+
   register( registrationDTO: RegistrationDTO): Observable<boolean> {
     return new Observable<boolean>();
   }

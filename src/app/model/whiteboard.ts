@@ -33,7 +33,7 @@ export interface WhiteBoardItem {
 }
 
 export interface ItemDTO {
-  user: string;
+  token: string;
   sectionId: number;
   title: string;
   detail: string;
@@ -53,6 +53,6 @@ export interface LoginDTO {
 }
 
 export interface LoginResponse {
-  username: string;
   success: boolean;
+  token: string;
 }
