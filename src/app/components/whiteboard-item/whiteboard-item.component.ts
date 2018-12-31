@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WhiteBoardItem} from '../../model/whiteboard';
+import { WhiteBoardItem } from '../../model/whiteboard';
 
 @Component({
   selector: 'app-whiteboard-item',
@@ -7,22 +7,28 @@ import { WhiteBoardItem} from '../../model/whiteboard';
   styleUrls: ['./whiteboard-item.component.css']
 })
 export class WhiteboardItemComponent implements OnInit {
-
   @Input()
   item: WhiteBoardItem;
 
   detailVisible = false;
 
   isActive(): boolean {
-    return this.item.active = this.item.expiresOn > this.item.createdOn;
+    return (this.item.active = this.item.expiresOn > this.item.createdOn);
   }
 
   toggleDetail() {
     this.detailVisible = !this.detailVisible;
   }
 
-  constructor() { }
+  formatDate(date: Date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
 
-  ngOnInit() {
+    return month + '/' + day + '/' + year;
   }
+
+  constructor() {}
+
+  ngOnInit() {}
 }

@@ -1,11 +1,7 @@
 <div *ngIf="isActive()">
-  <div class="tooltip"> 
-      <span class="tooltiptext">{{ item.author }}</span>
-  </div>
-    <p (click)="toggleDetail()">{{ item.title }}</p>
+  <p (click)="toggleDetail()">{{ item.title }}</p>
   <div *ngIf="detailVisible">
     {{ item.detail }}<br />
-    created on: {{ item.createdOn }}<br />
-    expires on: {{ item.expiresOn }}
+    expires on: {{ formatDate(item.expiresOn) }}
   </div>
 </div>
