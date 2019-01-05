@@ -7,7 +7,8 @@ import {
   ItemDTO,
   WhiteBoardHeadline,
   WhiteBoardColumn,
-  WhiteBoardSection
+  WhiteBoardSection,
+  RestMessage
 } from '../model/whiteboard';
 import { AuthenticationService } from './authentication.service';
 @Injectable({
@@ -40,7 +41,7 @@ export class DataService {
     return result;
   }
 
-  createItem(rawValue): Observable<WhiteBoardItem> {
+  createItem(rawValue) {
     console.log(rawValue);
     console.log('Creating item');
     const items = this.getItems(rawValue.sectionId);
@@ -55,7 +56,7 @@ export class DataService {
     });
     console.log(items);
 
-    return this.restService.create(this.createItemDTO(rawValue));
+    this.restService.create(this.createItemDTO(rawValue));
   }
 
   private createItemDTO(rawValue): ItemDTO {

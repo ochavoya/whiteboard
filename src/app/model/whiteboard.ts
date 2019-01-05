@@ -38,18 +38,18 @@ export interface ItemDTO {
   expiresOn: Date;
 }
 
+export interface RestMessage<T> {
+  success: boolean;
+  message: T;
+}
+
 export interface RegistrationDTO {
+  name: string;
   username: string;
   password: string;
-  email: string;
 }
 
 export interface LoginDTO {
   username: string;
   password: string;
-}
-
-export interface LoginResponse {
-  success: boolean;
-  token: string;
 }

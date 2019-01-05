@@ -1,39 +1,41 @@
 import { Injectable } from '@angular/core';
 import { RestClientService } from './rest-client.service';
-import { LoginDTO, RegistrationDTO, LoginResponse } from '../model/whiteboard';
+import { Observable } from 'rxjs';
+import { RestMessage } from '../model/whiteboard';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private _username = null;
-  private _authenticated = false;
-
-  get username() {
-    if (this._authenticated) {
-      return this._username;
-    }
-    return null;
-  }
+  public username: string = '';
+  public token: string = '';
 
   logout() {
-    this._username = null;
-    this._authenticated = false;
+    this.token = '';
   }
 
-  constructor(private restService: RestClientService) {}
-  registerUser(username: string, password: string, email: string) {}
-  register(registerDTO: RegistrationDTO) {
-    return true;
+  constructor(private restService: RestClientService) { }
+
+  registerUser(name: string, username: string, password: string):
+    Observable<RestMessage<string>> {
+    let value = this.restService.register({ name: name, username: username, password: password });
+    value.subscribe(response => {
+      console.log('AuthenticationService.register(): ' + response.message);
+      if (response.success)
+        this.login(username, password);
+    });
+    return value;
   }
 
-  login(username: string, password: string): string {
-    if (username === 'root') {
-      this._username = 'root';
-      this._authenticated = true;
-      return 'root';
-    }
-    this._username = null;
-    this._authenticated = false;
-    return null;
+  login(username: string, password: string): Observable<RestMessage<string>> {
+    let value = this.restService.login({ username: username, password: password });
+    value.subscribe(response => {
+      console.log('AuthenticationService.login(): ' + response.message);
+      if (response.success) {
+        this.username = username;
+        this.token = response.message;
+      }
+    });
+    return value;
   }
 }
