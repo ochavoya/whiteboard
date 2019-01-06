@@ -8,18 +8,24 @@ import { WhiteBoardHeadline, WhiteBoardColumn } from '../../model/whiteboard';
   templateUrl: './whiteboard.component.html',
   styleUrls: ['./whiteboard.component.css']
 })
+
 export class WhiteboardComponent implements OnInit {
-  token;
+  token: string = '';
   board = 0;
   headlines: WhiteBoardHeadline[] = [];
   columns: WhiteBoardColumn[] = [];
+  showRegistration = false;
 
   setToken(token) {
     this.token = token;
   }
 
+  showRegistrationForm() {
+    this.showRegistration = !this.showRegistration;
+  }
+
   logout() {
-    this.token = null;
+    this.token = '';
     this.authenticationService.logout();
   }
 
@@ -31,7 +37,7 @@ export class WhiteboardComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private dataService: DataService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.headlines = this.dataService.getHeadLines();

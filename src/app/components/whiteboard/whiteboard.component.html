@@ -4,6 +4,7 @@
       <div class="navbar-header">
         <h2><i>XP-Whiteboard</i></h2>
       </div>
+      <a (click)="showRegistrationForm()">register</a>
       <button
         type="button"
         class="btn btn-danger navbar-btn"
@@ -48,4 +49,7 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container" *ngIf="showRegistration">
+   Registration form goes here!
 </div>
