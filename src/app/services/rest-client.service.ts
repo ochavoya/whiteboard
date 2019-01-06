@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError} from 'rxjs';
 import { ItemDTO, WhiteBoardItem, RegistrationDTO, LoginDTO, RestMessage } from '../model/whiteboard';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-@Injectable({
-  providedIn: 'root'
-})
+
+@Injectable({providedIn: 'root'})
+
 export class RestClientService {
 
-  api='http://localhost:4200/whiteboard';
+  api='http://localhost:8080/whiteboard';
 
   constructor(private http: HttpClient, private httpHandler: HttpHandler) { }
 

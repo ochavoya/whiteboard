@@ -14,14 +14,14 @@ export class WhiteboardComponent implements OnInit {
   board = 0;
   headlines: WhiteBoardHeadline[] = [];
   columns: WhiteBoardColumn[] = [];
-  showRegistration = false;
+  registration = false;
 
   setToken(token) {
     this.token = token;
   }
 
   showRegistrationForm() {
-    this.showRegistration = !this.showRegistration;
+    this.registration = !this.registration;
   }
 
   logout() {

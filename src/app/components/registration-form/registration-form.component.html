@@ -1,0 +1,43 @@
+<span class="container-fluid">
+
+    <input
+    [(ngModel)]="name"
+    mdInput
+    name="name"
+    placeholder="name"
+    required
+  />
+
+  <input
+    [(ngModel)]="username"
+    mdInput
+    name="username"
+    placeholder="username"
+    required
+  />
+
+  <input
+    [(ngModel)]="password"
+    type="password"
+    mdInput
+    name="password"
+    placeholder="password"
+    required
+  />
+
+  <input
+  [(ngModel)]="checkPassword"
+  type="password"
+  mdInput
+  name="checkPassword"
+  placeholder="confirm"
+  required
+/>
+  <button
+    type="button"
+    class="btn btn-danger navbar-btn"
+    (click)="register()"
+  >
+    register
+  </button>
+</span>

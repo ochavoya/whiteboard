@@ -12,10 +12,10 @@ import { RestClientService } from './services/rest-client.service';
 import { DataService } from './services/data.service';
 import { ItemFormComponent } from './components/item-form/item-form.component';
 import { FormsModule } from '@angular/forms';
-import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AuthenticationService } from './services/authentication.service';
 import { WhiteBoardItem } from './model/whiteboard';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 
 
 @NgModule({
@@ -26,8 +26,8 @@ import { WhiteBoardItem } from './model/whiteboard';
     WhiteboardSectionComponent,
     WhiteboardItemComponent,
     ItemFormComponent,
-    HomePageComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegistrationFormComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [RestClientService, DataService, AuthenticationService, HttpClient],
