@@ -29,7 +29,7 @@
         logout
       </button>
       <app-login-form
-        *ngIf="token == null"
+        *ngIf="token == ''"
         (loginEvent)="setToken($event)"
       ></app-login-form>
     </div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { AuthenticationService } from './services/authentication.service';
 import { WhiteBoardItem } from './model/whiteboard';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +29,8 @@ import { WhiteBoardItem } from './model/whiteboard';
     HomePageComponent,
     LoginFormComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [RestClientService, DataService, AuthenticationService],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [RestClientService, DataService, AuthenticationService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -23,7 +23,7 @@ export class AuthenticationService {
       console.log('AuthenticationService.register(): ' + response.message);
       if (response.success)
         this.login(username, password);
-    });
+    }, err => console.log( `AuthenticationService.register() - Error while registering user: ${username}` ));
     return value;
   }
 
@@ -35,7 +35,7 @@ export class AuthenticationService {
         this.username = username;
         this.token = response.message;
       }
-    });
+    }, err => console.log(`AuthenticationService.login() - Could not login user: ${username}`));
     return value;
   }
 }
