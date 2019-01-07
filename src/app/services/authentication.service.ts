@@ -12,6 +12,7 @@ export class AuthenticationService {
 
   logout() {
     this.token = '';
+    this.restService.logout(this.username);
   }
 
   constructor(private restService: RestClientService) { }
