@@ -26,7 +26,7 @@ export class RestClientService {
   }
 
   logout(username: string): Observable<RestMessage<string>> {
-    return this.restClient('post', '/login', username) as Observable<RestMessage<string>>;
+    return this.restClient('post', '/logout', username) as Observable<RestMessage<string>>;
   }
 
   create(itemDTO: ItemDTO): Observable<RestMessage<ItemDTO>> {
