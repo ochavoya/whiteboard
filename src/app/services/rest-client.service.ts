@@ -1,21 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, throwError} from 'rxjs';
 import { ItemDTO, WhiteBoardItem, RegistrationDTO, LoginDTO, RestMessage } from '../model/whiteboard';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 
-export class RestClientService {
+export class RestClientService implements OnInit {
 
   api='http://localhost:8080/whiteboard';
 
-  getHeaders(): HttpHeaders {
-   let headers = new HttpHeaders();
-   headers.set('Content-Type','application/JSON')
-   return headers;
-  }
+  private headers: HttpHeaders;
 
   constructor(private http: HttpClient, private httpHandler: HttpHandler) { }
+
+  ngOnInit() {
+    this.headers = new HttpHeaders();
+    this.headers.set('Content-Type','application/JSON')
+  }
 
   register(registrationDTO: RegistrationDTO): Observable<RestMessage<string>> {
     return this.restClient('post', '/register', registrationDTO) as Observable<RestMessage<string>>;
@@ -30,7 +31,7 @@ export class RestClientService {
   }
 
   create(itemDTO: ItemDTO): Observable<RestMessage<ItemDTO>> {
-    return this.restClient('post', '/', itemDTO) as Observable<RestMessage<ItemDTO>>;
+    return this.restClient('post', '', itemDTO) as Observable<RestMessage<ItemDTO>>;
   }
 
   load(): Observable<RestMessage<ItemDTO[]>> {
@@ -42,10 +43,10 @@ export class RestClientService {
   
     switch (method) {
       case 'get':
-        return this.http.get(path, {headers:this.getHeaders()}) as Observable<RestMessage<any>>;
+        return this.http.get(path, {headers:this.headers}) as Observable<RestMessage<any>>;
       default:
         if (data == null) throwError('POST without data');
-        return this.http.post(path, data, {headers:this.getHeaders()}) as Observable<RestMessage<any>>;
+        return this.http.post(path, data, {headers:this.headers}) as Observable<RestMessage<any>>;
     }
   }
 }
