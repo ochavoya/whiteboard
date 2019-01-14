@@ -14,6 +14,10 @@ export class RegistrationFormComponent implements OnInit {
   confirmPassword: string;
 
   register() {
+    console.log("name: " + this.name);
+    console.log("username: " + this.username);
+    console.log("password: " + this.password)
+    console.log("confirm: " + this.confirmPassword);
     if (this.password == this.confirmPassword) {
       this.authenticationService.registerUser(this.name, this.username, this.password);
     }

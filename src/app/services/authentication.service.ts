@@ -19,7 +19,9 @@ export class AuthenticationService {
 
   registerUser(name: string, username: string, password: string):
     Observable<RestMessage<string>> {
-    let value = this.restService.register({ name: name, username: username, password: password });
+    const dto = { name: name, username: username, password: password };
+    console.log(dto);
+    let value = this.restService.register(dto);
     value.subscribe(response => {
       console.log('AuthenticationService.register(): ' + response.message);
       if (response.success)

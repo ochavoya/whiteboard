@@ -30,7 +30,7 @@ export class RestClientService {
   }
 
   create(itemDTO: ItemDTO): Observable<RestMessage<ItemDTO>> {
-    return this.restClient('post', '/create', itemDTO) as Observable<RestMessage<ItemDTO>>;
+    return this.restClient('post', '/', itemDTO) as Observable<RestMessage<ItemDTO>>;
   }
 
   load(): Observable<RestMessage<ItemDTO[]>> {

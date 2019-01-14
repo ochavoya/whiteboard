@@ -13,7 +13,6 @@ export class LoginFormComponent {
   @Output()
   loginEvent: EventEmitter<string> = new EventEmitter<string>();
   @Input()
-  loginEventHandler;
   username: string;
   password: string;
 
