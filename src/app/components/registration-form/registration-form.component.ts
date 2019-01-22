@@ -7,7 +7,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit {
-
   name: string;
   username: string;
   password: string;
@@ -15,13 +14,23 @@ export class RegistrationFormComponent implements OnInit {
 
   register() {
     if (this.password == this.confirmPassword) {
-      this.authenticationService.registerUser(this.name, this.username, this.password);
+      const dto = {
+        name: this.name,
+        username: this.username,
+        password: this.password
+      };
+      console.log(
+        'register() - ' + dto.name + ' : ' + dto.username + ' : ' + dto.password
+      );
+      this.authenticationService.registerUser(
+        this.name,
+        this.username,
+        this.password
+      );
     }
   }
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
