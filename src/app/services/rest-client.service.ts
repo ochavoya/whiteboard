@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { Observable, throwError} from 'rxjs';
 import { ItemDTO, WhiteBoardItem, RegistrationDTO, LoginDTO, RestMessage } from '../model/whiteboard';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+import { share } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 
@@ -43,10 +44,10 @@ export class RestClientService implements OnInit {
   
     switch (method) {
       case 'get':
-        return this.http.get(path, {headers:this.headers}) as Observable<RestMessage<any>>;
+        return this.http.get(path, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
       default:
         if (data == null) throwError('POST without data');
-        return this.http.post(path, data, {headers:this.headers}) as Observable<RestMessage<any>>;
+        return this.http.post(path, data, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
     }
   }
 }
