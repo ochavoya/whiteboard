@@ -1,5 +1,5 @@
 <p (click)="toggleDetail()">{{ item.title }}</p>
 <div *ngIf="detailVisible">
   {{ item.detail }}<br />
-  expires on: {{ formatDate(item.expiresOn) }}
+  expires on: {{ item.expiresOn | date: 'dd/MM/yyyy' }}
 </div>

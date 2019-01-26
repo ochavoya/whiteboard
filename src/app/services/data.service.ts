@@ -60,10 +60,18 @@ export class DataService {
     this.restService.load().subscribe(
       result => {
         console.log("Items: " + result);
-        let map = [];
+        let map: WhiteBoardItem[][]=[];
         Configuration.columns
-          .forEach(x => x.sections.map(y => map[y.id] = y));
-        result.data.forEach(x => map[x.sectionId].push(x));
+          .forEach(x => x.sections.forEach(y => map[y.id] = y.items));
+        result.data.forEach(x => map[x.sectionId].push(
+          {
+            boardId: x.boardId,
+            sectionId: x.sectionId,
+            title: x.title,
+            detail: x.detail,
+            expiresOn: x.expiresOn
+          }
+        ));
       }
       ,
       error => console.log('Could not load items from the database')

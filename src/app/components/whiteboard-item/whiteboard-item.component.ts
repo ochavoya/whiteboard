@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WhiteBoardItem } from '../../model/whiteboard';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 @Component({
   selector: 'app-whiteboard-item',
@@ -15,14 +16,6 @@ export class WhiteboardItemComponent implements OnInit {
 
   toggleDetail() {
     this.detailVisible = !this.detailVisible;
-  }
-
-  formatDate(date: Date) {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-
-    return month + '/' + day + '/' + year;
   }
 
   constructor() {}
