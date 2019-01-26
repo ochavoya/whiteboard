@@ -32,7 +32,7 @@ export class RestClientService implements OnInit {
   }
 
   create(itemDTO: ItemDTO): Observable<RestMessage<ItemDTO>> {
-    return this.restClient('post', '', itemDTO) as Observable<RestMessage<ItemDTO>>;
+    return this.restClient('post', '/create', itemDTO) as Observable<RestMessage<ItemDTO>>;
   }
 
   load(): Observable<RestMessage<ItemDTO[]>> {
@@ -47,6 +47,8 @@ export class RestClientService implements OnInit {
         return this.http.get(path, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
       default:
         if (data == null) throwError('POST without data');
+        console.log(`post() ${path}`)
+        console.log(data);
         return this.http.post(path, data, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
     }
   }

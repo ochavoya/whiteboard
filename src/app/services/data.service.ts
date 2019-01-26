@@ -42,31 +42,19 @@ export class DataService {
   }
 
   createItem(rawValue) {
-    console.log(rawValue);
-    console.log('Creating item');
-    const items = this.getItems(rawValue.sectionId);
-    console.log(items);
-    items.push({
-      id: null,
+
+    this.getItems(rawValue.sectionId).push({
       boardId: rawValue.boardId,
       sectionId: rawValue.sectionId,
       title: rawValue.title,
       detail: rawValue.detail,
       expiresOn: rawValue.expiresOn
     });
-    console.log(items);
 
-    this.restService.create(this.createItemDTO(rawValue));
+    this.restService
+      .create({token: this.authenticationService.token,... rawValue})
+      .subscribe( result => console.log(result), error=> console.log(error));
   }
 
-  private createItemDTO(rawValue): ItemDTO {
-    const result: ItemDTO = {
-      token: this.authenticationService.username,
-      sectionId: rawValue['sectionId'],
-      title: rawValue['title'],
-      detail: rawValue['detail'],
-      expiresOn: rawValue['expiresOn']
-    };
-    return result;
-  }
+  
 }

@@ -22,7 +22,6 @@ export interface WhiteBoardSection {
 }
 
 export interface WhiteBoardItem {
-  id: number;
   boardId: number;
   sectionId: number;
   title: string;
@@ -32,6 +31,7 @@ export interface WhiteBoardItem {
 
 export interface ItemDTO {
   token: string;
+  boardId: number;
   sectionId: number;
   title: string;
   detail: string;
@@ -40,7 +40,7 @@ export interface ItemDTO {
 
 export interface RestMessage<T> {
   success: boolean;
-  message: T;
+  data: T;
 }
 
 export interface RegistrationDTO {

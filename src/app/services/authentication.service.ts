@@ -26,7 +26,7 @@ export class AuthenticationService {
     const value = this.restService.register(dto);
     value.subscribe(
       response => {
-        console.log('AuthenticationService.register(): ' + response.message);
+        console.log('AuthenticationService.register(): ' + response.data);
         if (response.success) {
           this.login(username, password);
         }
@@ -48,10 +48,10 @@ export class AuthenticationService {
     });
     value.subscribe(
       response => {
-        console.log('AuthenticationService.login(): ' + response.message);
+        console.log('AuthenticationService.login(): ' + response.data);
         if (response.success) {
           this.username = username;
-          this.token = response.message;
+          this.token = response.data;
         }
       },
       err =>

@@ -42,6 +42,7 @@ export class WhiteboardComponent implements OnInit {
   ngOnInit() {
     this.headlines = this.dataService.getHeadLines();
     this.token = this.authenticationService.token;
+    
   }
 
   selectBoard(index) {
