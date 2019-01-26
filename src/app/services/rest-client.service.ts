@@ -41,14 +41,12 @@ export class RestClientService implements OnInit {
 
   restClient(method: string, path: string, data?: any): Observable<RestMessage<any>> {
     path = `${this.api}${path}`;
-  
     switch (method) {
       case 'get':
+        console.log(path);
         return this.http.get(path, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
       default:
         if (data == null) throwError('POST without data');
-        console.log(`post() ${path}`)
-        console.log(data);
         return this.http.post(path, data, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
     }
   }

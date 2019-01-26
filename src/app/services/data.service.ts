@@ -18,7 +18,7 @@ export class DataService {
   constructor(
     private restService: RestClientService,
     private authenticationService: AuthenticationService
-  ) {}
+  ) { }
 
   getHeadLines(): WhiteBoardHeadline[] {
     return Configuration.headlines;
@@ -52,9 +52,21 @@ export class DataService {
     });
 
     this.restService
-      .create({token: this.authenticationService.token,... rawValue})
-      .subscribe( result => console.log(result), error=> console.log(error));
+      .create({ token: this.authenticationService.token, ...rawValue })
+      .subscribe(result => console.log(result), error => console.log(error));
   }
 
-  
+  load() {
+    this.restService.load().subscribe(
+      result => {
+        console.log("Items: " + result);
+        let map = [];
+        Configuration.columns
+          .forEach(x => x.sections.map(y => map[y.id] = y));
+        result.data.forEach(x => map[x.sectionId].push(x));
+      }
+      ,
+      error => console.log('Could not load items from the database')
+    );
+  }
 }
