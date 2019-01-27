@@ -4,7 +4,7 @@
       <div class="navbar-header">
         <h2><i>XP-Whiteboard</i></h2>
       </div>
-      <a (click)="showRegistrationForm()">register</a>
+      <span *ngIf="!token"><a (click)="showRegistrationForm()">register</a></span>
       <button
         type="button"
         class="btn btn-danger navbar-btn"
@@ -50,6 +50,6 @@
     </div>
   </div>
 </div>
-<div class="container" *ngIf="registration">
+<div class="container" *ngIf="registration && !token">
    <app-registration-form></app-registration-form>
 </div>
