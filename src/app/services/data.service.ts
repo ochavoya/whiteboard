@@ -1,14 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RestClientService } from './rest-client.service';
 import { Configuration } from '../config';
-import { Observable, fromEventPattern, of } from 'rxjs';
 import {
   WhiteBoardItem,
-  ItemDTO,
   WhiteBoardHeadline,
-  WhiteBoardColumn,
-  WhiteBoardSection,
-  RestMessage
 } from '../model/whiteboard';
 import { AuthenticationService } from './authentication.service';
 @Injectable({
@@ -59,7 +54,6 @@ export class DataService {
   load() {
     this.restService.load().subscribe(
       result => {
-        console.log("Items: " + result);
         let map: WhiteBoardItem[][]=[];
         Configuration.columns
           .forEach(x => x.sections.forEach(y => map[y.id] = y.items));
