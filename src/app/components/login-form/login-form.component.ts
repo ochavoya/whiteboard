@@ -12,7 +12,6 @@ export class LoginFormComponent {
 
   @Output()
   loginEvent: EventEmitter<string> = new EventEmitter<string>();
-  @Input()
   username: string;
   password: string;
 
