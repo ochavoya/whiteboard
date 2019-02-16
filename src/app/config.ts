@@ -104,11 +104,11 @@ const happyFaceSections = [
   }
 ];
 // sections 71-80
-const NETURAL_FACE = 60;
+const NEUTRAL_FACE = 60;
 const neutralFaceSections = [
   {
     id: 71,
-    columnId: NETURAL_FACE,
+    columnId: NEUTRAL_FACE,
     title: 'Uhmm...',
     detail: null,
     items: []
@@ -207,7 +207,7 @@ export class Configuration {
     },
 
     {
-      id: NETURAL_FACE,
+      id: NEUTRAL_FACE,
       whiteBoardId: RETRO,
       icon: 'neutral.jpeg',
       title: null,

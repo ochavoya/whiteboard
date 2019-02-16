@@ -4,8 +4,14 @@ import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 @Component({
   selector: 'app-whiteboard-item',
-  templateUrl: './whiteboard-item.component.html',
-  styleUrls: ['./whiteboard-item.component.css']
+  template: `<p (click)="toggleDetail()">{{ item.title }}</p>
+  <div *ngIf="detailVisible" class="whiteboard-detail">
+    {{ item.detail }}<br />
+    <span class="whiteboard-detail-expires">expires on: {{ item.expiresOn | date: 'dd/MM/yyyy' }}</span>
+  </div>
+  `,
+  styles: ['.whiteboard-detail={ font-size: small}',
+           '.whiteboard-detail-expires={ font-size: xx-small}']
 })
 export class WhiteboardItemComponent implements OnInit {
   @Input()
