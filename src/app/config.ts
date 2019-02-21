@@ -41,7 +41,7 @@ const helpSections = [
     id: 15,
     columnId: HELP,
     title: 'Resources',
-    detail: 'Sources of relevant information.',
+    detail: 'Sources of relevant information',
     items: []
   }
 ];
@@ -80,14 +80,14 @@ const futureSections = [
     id: 31,
     columnId: THE_FUTURE,
     title: 'Events',
-    detail: 'What\'s going to happen soon.',
+    detail: 'What\'s going to happen soon?',
     items: []
   },
   {
     id: 35,
     columnId: THE_FUTURE,
     title: 'Dead lines',
-    detail: 'What we have coming our way.',
+    detail: 'What we have coming our way',
     items: []
   }
 ];

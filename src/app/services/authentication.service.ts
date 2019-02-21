@@ -26,7 +26,6 @@ export class AuthenticationService {
     const value = this.restService.register(dto);
     value.subscribe(
       response => {
-        console.log('AuthenticationService.register(): ' + response.data);
         if (response.success) {
           this.login(username, password);
         }
@@ -40,15 +39,12 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<RestMessage<string>> {
-
-    console.log(username, password);
     const value = this.restService.login({
       username: username,
       password: password
     });
     value.subscribe(
       response => {
-        console.log('AuthenticationService.login(): ' + response.data);
         if (response.success) {
           this.username = username;
           this.token = response.data;
