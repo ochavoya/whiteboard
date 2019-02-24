@@ -14,7 +14,6 @@ import { ItemFormComponent } from './components/item-form/item-form.component';
 import { FormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AuthenticationService } from './services/authentication.service';
-import { WhiteBoardItem } from './model/whiteboard';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 
 

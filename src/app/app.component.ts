@@ -1,22 +1,19 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { DataService } from './services/data.service';
-import { AuthenticationService } from './services/authentication.service';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from './services/data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
   title = 'whiteboard';
-  
-  constructor( private dataService: DataService, private authenticationService: AuthenticationService) {
-    
+
+  constructor(private dataService: DataService) {
+
   }
+
   ngOnInit() {
     this.dataService.load();
-  }
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    this.authenticationService.resetTimeout();   
   }
 }

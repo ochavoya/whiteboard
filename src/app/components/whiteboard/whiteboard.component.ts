@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { WhiteBoardHeadline, WhiteBoardColumn } from '../../model/whiteboard';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from 'src/app/services/data.service';
+import {AuthenticationService} from 'src/app/services/authentication.service';
+import {WhiteBoardHeadline, WhiteBoardColumn} from '../../model/whiteboard';
 
 @Component({
   selector: 'app-whiteboard',
@@ -30,6 +30,7 @@ export class WhiteboardComponent implements OnInit {
   }
 
   getCreatePath() {
+    this.authenticationService.resetTimeout();
     const path = [`create/${this.board}`];
     return path;
   }
@@ -37,12 +38,13 @@ export class WhiteboardComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private dataService: DataService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.headlines = this.dataService.getHeadLines();
     this.token = this.authenticationService.token;
-    
+
   }
 
   selectBoard(index) {

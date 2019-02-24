@@ -1,6 +1,4 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { Observable, observable } from 'rxjs';
-import { RestMessage } from '../../model/whiteboard';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({

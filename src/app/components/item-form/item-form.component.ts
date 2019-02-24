@@ -16,7 +16,6 @@ export class ItemFormComponent implements OnInit {
   sectionId = 0;
   title: string;
   detail: string;
-  createdOn: string = this.formatDate(this.now);
   expiresOn: string = this.formatDate(
     new Date(this.now.setDate(this.now.getDate() + 1))
   );

@@ -1,22 +1,23 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, throwError} from 'rxjs';
-import { ItemDTO, WhiteBoardItem, RegistrationDTO, LoginDTO, RestMessage } from '../model/whiteboard';
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
-import { share } from 'rxjs/operators';
+import {Injectable, OnInit} from '@angular/core';
+import {Observable, throwError} from 'rxjs';
+import {ItemDTO, RegistrationDTO, LoginDTO, RestMessage} from '../model/whiteboard';
+import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
+import {share} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 
 export class RestClientService implements OnInit {
 
-  api='http://localhost:8080/whiteboard';
+  api = 'http://localhost:8080/whiteboard';
 
   private headers: HttpHeaders;
 
-  constructor(private http: HttpClient, private httpHandler: HttpHandler) { }
+  constructor(private http: HttpClient, private httpHandler: HttpHandler) {
+  }
 
   ngOnInit() {
     this.headers = new HttpHeaders();
-    this.headers.set('Content-Type','application/JSON')
+    this.headers.set('Content-Type', 'application/JSON')
   }
 
   register(registrationDTO: RegistrationDTO): Observable<RestMessage<string>> {
@@ -44,10 +45,10 @@ export class RestClientService implements OnInit {
     switch (method) {
       case 'get':
         console.log(path);
-        return this.http.get(path, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
+        return this.http.get(path, {headers: this.headers}).pipe(share()) as Observable<RestMessage<any>>;
       default:
         if (data == null) throwError('POST without data');
-        return this.http.post(path, data, {headers:this.headers}).pipe(share()) as Observable<RestMessage<any>>;
+        return this.http.post(path, data, {headers: this.headers}).pipe(share()) as Observable<RestMessage<any>>;
     }
   }
 }

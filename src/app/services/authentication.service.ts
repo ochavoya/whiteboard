@@ -72,7 +72,7 @@ export class AuthenticationService {
       },
       err =>
         console.log(
-          `AuthenticationService.login() - Could not login user: ${username}`
+          `AuthenticationService.login() - Could not login user: ${username}\n ERROR: ${err}`
         )
     );
     return value;

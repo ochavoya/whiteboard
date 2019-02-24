@@ -1,17 +1,17 @@
 <table class="table">
-    <thead>
-      <th (click)="toggleDetail()">{{section.title}}</th>
-    </thead>
-    <tbody *ngIf="showDetail">
-        <tr>{{section.detail}}</tr>
-    </tbody>
-  </table>
-  <div class="table-responsive">
-  </div>
-  <table class="table" *ngIf="section.items.length">
-    <tr *ngFor="let x of section.items">
-      <app-whiteboard-item [item]="x"></app-whiteboard-item>
-    </tr>
-  </table>
+  <thead>
+  <th (click)="toggleDetail()">{{section.title}}</th>
+  </thead>
+  <tbody *ngIf="showDetail">
+  <tr>{{section.detail}}</tr>
+  </tbody>
+</table>
+<div class="table-responsive">
+</div>
+<table class="table" *ngIf="section.items.length">
+  <tr *ngFor="let x of section.items">
+    <app-whiteboard-item [item]="x"></app-whiteboard-item>
+  </tr>
+</table>
   
   
