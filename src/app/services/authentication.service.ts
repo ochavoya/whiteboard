@@ -3,16 +3,22 @@ import { RestClientService } from './rest-client.service';
 import { Observable } from 'rxjs';
 import { RestMessage } from '../model/whiteboard';
 
+
+const minutes= 1;
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   public username = '';
   public token = '';
+  public timeout:any;
 
   logout() {
     this.token = '';
     this.restService.logout(this.username);
+    clearTimeout(this.timeout);
+    this.timeout = null;
   }
 
   constructor(private restService: RestClientService) {}
@@ -38,6 +44,19 @@ export class AuthenticationService {
     return value;
   }
 
+  private setTimeout() {
+    this.timeout = setTimeout(()=>{
+      this.logout();
+      document.location.href='home';
+    }, minutes * 60000)
+  }
+
+  public resetTimeout() {
+    if( this.timeout ) {
+      this.setTimeout();
+    }
+  }
+
   login(username: string, password: string): Observable<RestMessage<string>> {
     const value = this.restService.login({
       username: username,
@@ -48,6 +67,7 @@ export class AuthenticationService {
         if (response.success) {
           this.username = username;
           this.token = response.data;
+          this.setTimeout();
         }
       },
       err =>
