@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { RestMessage } from '../model/whiteboard';
 
 
-const minutes= 1;
+const minutes= 5;
 
 @Injectable({
   providedIn: 'root'

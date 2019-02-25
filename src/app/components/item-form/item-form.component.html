@@ -6,70 +6,49 @@
       </div>
     </div>
   </nav>
-  <div class="row">
-    <div class="col-md-7"></div>
-    <div class="col-md-1"><label>Section: </label></div>
-    <div class="col-md-4">
-      <select [(ngModel)]="sectionId">
-        <option value="0"> </option>
-        <option *ngFor="let x of sections" value="{{ x.id }}">{{
-          x.title
-        }}</option>
-      </select>
+  <form [formGroup]="itemFormGroup" (ngSubmit)="submit()" >
+    <div class="row">
+      <div class="col-md-7"></div>
+      <div class="col-md-1"><label>Section: </label></div>
+      <div class="col-md-4">
+        <select name="section" mdInput type="text" placeholder="Section" formControlName="sectionId">
+          <option value="0"></option>
+          <option *ngFor="let x of sections" value="{{ x.id }}">{{
+            x.title
+            }}</option>
+        </select>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <input
-        [(ngModel)]="title"
-        mdInput
-        name="title"
-        placeholder="title"
-        required
-      />
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <input name="title" mdInput type="text" placeholder="Title" formControlName="title">
+      </div>
+      <div class="col-md-4">
+        <input name="expiresOn" mdInput type="text" placeholder="yyyy-mm-dd" formControlName="expiresOn">
+      </div>
     </div>
-    <div class="col-md-4">
-      <input
-        [(ngModel)]="expiresOn"
-        mdInput
-        placeholder="expires on"
-        required
-      />
-    </div>
-  </div>
-  <br />
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <textarea
-        [(ngModel)]="detail"
-        mdInput
-        name="details"
-        placeholder="details"
-        required
-        rows="3"
-      >
+    <br/>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+      <textarea name="expiresOn" mdInput placeholder="Detail" formControlName="detail" rows="3" >
       </textarea>
+      </div>
+      <div class="col-md-2">
+        <button
+          type="button"
+          class="btn btn-danger navbar-btn"
+          [routerLink]="['']"
+        >
+          Cancel
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" (click)="submit()" class="btn btn-danger navbar-btn" [disabled]="itemFormGroup.invalid" [routerLink]="['']">
+          Create
+        </button>
+      </div>
     </div>
-    <div class="col-md-2">
-      <button
-        type="button"
-        class="btn btn-danger navbar-btn"
-        [routerLink]="['']"
-      >
-        Cancel
-      </button>
-    </div>
-    <div class="col-md-2">
-      <button
-        type="button"
-        class="btn btn-danger navbar-btn"
-        (click)="submit()"
-        [routerLink]="['']"
-      >
-        Create
-      </button>
-    </div>
-  </div>
+  </form>
 </div>

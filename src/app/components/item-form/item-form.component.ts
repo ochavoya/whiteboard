@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { ActivatedRoute } from '@angular/router';
+import {DataService} from '../../services/data.service';
+import {ActivatedRoute} from '@angular/router';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {DateFormatter} from "@angular/common/src/pipes/deprecated/intl";
+import DateTimeFormat = Intl.DateTimeFormat;
 
 @Component({
   selector: 'app-item-form',
@@ -8,21 +11,50 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./item-form.component.css']
 })
 export class ItemFormComponent implements OnInit {
-  submitted = false;
-  now = new Date();
+  itemFormGroup: FormGroup;
   board = 0;
   sections = null;
   sectionId = 0;
   title: string;
   detail: string;
-  expiresOn: string = this.formatDate(
-    new Date(this.now.setDate(this.now.getDate() + 1))
-  );
+  expiresOn: string;
 
-  formatDate(date: Date): string {
-    return (
-      date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear()
-    );
+
+  constructor(
+    private dataService: DataService,
+    private activatedRoute: ActivatedRoute,
+    private formGroupCreator: FormBuilder
+  ) {
+  }
+
+  ngOnInit() {
+
+    this.activatedRoute.params.subscribe(params => (this.board = params['board']));
+
+    this.processColumns();
+
+    const required = Validators.required;
+
+    this.itemFormGroup = this.formGroupCreator.group({
+      boardId: [this.board],
+      sectionId: [0, required],
+      title: ['', required],
+      detail: ['', required],
+      expiresOn: ['', required]
+    });
+  }
+
+  submit() {
+
+    const rawValue = {
+      boardId: this.itemFormGroup.get('boardId').value,
+      sectionId: this.itemFormGroup.get('sectionId').value,
+      title: this.itemFormGroup.get('title').value,
+      detail: this.itemFormGroup.get('detail').value,
+      expiresOn: this.itemFormGroup.get('expiresOn').value
+    };
+
+    this.dataService.createItem(rawValue);
   }
 
   processColumns() {
@@ -30,38 +62,8 @@ export class ItemFormComponent implements OnInit {
     const columns = this.dataService.getColumns(this.board);
     for (const x of columns) {
       for (const y of x.sections) {
-        this.sections.push({ id: y.id, title: y.title });
+        this.sections.push({id: y.id, title: y.title});
       }
     }
-  }
-
-  submit() {
-    if (this.submitted == true) {
-      return;
-    }
-    if (this.sectionId == 0) {
-      return;
-    }
-
-    const rawValue = {
-      boardId: this.board,
-      sectionId: this.sectionId,
-      title: this.title,
-      detail: this.detail,
-      expiresOn: new Date(this.expiresOn)
-    };
-    this.dataService.createItem(rawValue);
-  }
-
-  constructor(
-    private dataService: DataService,
-    private activatedRoute: ActivatedRoute
-  ) {}
-
-  ngOnInit() {
-    this.activatedRoute.params.subscribe(
-      params => (this.board = params['board'])
-    );
-    this.processColumns();
   }
 }
