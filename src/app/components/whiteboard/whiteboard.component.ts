@@ -1,16 +1,15 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {DataService} from 'src/app/services/data.service';
-import {AuthenticationService} from 'src/app/services/authentication.service';
-import {WhiteBoardHeadline, WhiteBoardColumn} from '../../model/whiteboard';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { WhiteBoardHeadline, WhiteBoardColumn } from '../../model/whiteboard';
 
 @Component({
   selector: 'app-whiteboard',
   templateUrl: './whiteboard.component.html',
   styleUrls: ['./whiteboard.component.css']
 })
-
 export class WhiteboardComponent implements OnInit, OnChanges {
-  token: string = '';
+  token = '';
   board = 0;
   headlines: WhiteBoardHeadline[] = [];
   columns: WhiteBoardColumn[] = [];
@@ -19,8 +18,7 @@ export class WhiteboardComponent implements OnInit, OnChanges {
   constructor(
     private authenticationService: AuthenticationService,
     private dataService: DataService
-  ) {
-  }
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.authenticationService.resetTimeout();

@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestClientService } from './rest-client.service';
 import { Configuration } from '../config';
-import {
-  WhiteBoardItem,
-  WhiteBoardHeadline,
-} from '../model/whiteboard';
+import { WhiteBoardItem, WhiteBoardHeadline } from '../model/whiteboard';
 import { AuthenticationService } from './authentication.service';
 @Injectable({
   providedIn: 'root'
@@ -13,7 +10,7 @@ export class DataService {
   constructor(
     private restService: RestClientService,
     private authenticationService: AuthenticationService
-  ) { }
+  ) {}
 
   getHeadLines(): WhiteBoardHeadline[] {
     return Configuration.headlines;
@@ -37,7 +34,6 @@ export class DataService {
   }
 
   createItem(rawValue) {
-
     this.getItems(rawValue.sectionId).push({
       boardId: rawValue.boardId,
       sectionId: rawValue.sectionId,
@@ -54,20 +50,20 @@ export class DataService {
   load() {
     this.restService.load().subscribe(
       result => {
-        let map: WhiteBoardItem[][]=[];
-        Configuration.columns
-          .forEach(x => x.sections.forEach(y => map[y.id] = y.items));
-        result.data.forEach(x => map[x.sectionId].push(
-          {
+        const map: WhiteBoardItem[][] = [];
+        Configuration.columns.forEach(x =>
+          x.sections.forEach(y => (map[y.id] = y.items))
+        );
+        result.data.forEach(x =>
+          map[x.sectionId].push({
             boardId: x.boardId,
             sectionId: x.sectionId,
             title: x.title,
             detail: x.detail,
             expiresOn: x.expiresOn
-          }
-        ));
-      }
-      ,
+          })
+        );
+      },
       error => console.log('Could not load items from the database')
     );
   }

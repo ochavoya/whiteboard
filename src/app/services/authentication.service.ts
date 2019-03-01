@@ -3,8 +3,7 @@ import { RestClientService } from './rest-client.service';
 import { Observable } from 'rxjs';
 import { RestMessage } from '../model/whiteboard';
 
-
-const minutes= 5;
+const minutes = 5;
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ const minutes= 5;
 export class AuthenticationService {
   public username = '';
   public token = '';
-  public timeout:any;
+  public timeout: any;
 
   logout() {
     this.token = '';
@@ -45,14 +44,14 @@ export class AuthenticationService {
   }
 
   private setTimeout() {
-    this.timeout = setTimeout(()=>{
+    this.timeout = setTimeout(() => {
       this.logout();
-      document.location.href='home';
-    }, minutes * 60000)
+      document.location.href = 'home';
+    }, minutes * 60000);
   }
 
   public resetTimeout() {
-    if( this.timeout ) {
+    if (this.timeout) {
       this.setTimeout();
     }
   }

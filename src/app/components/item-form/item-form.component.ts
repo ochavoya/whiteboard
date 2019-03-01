@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../services/data.service';
-import {ActivatedRoute} from '@angular/router';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {DateFormatter} from "@angular/common/src/pipes/deprecated/intl";
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import DateTimeFormat = Intl.DateTimeFormat;
 
 @Component({
@@ -19,17 +18,16 @@ export class ItemFormComponent implements OnInit {
   detail: string;
   expiresOn: string;
 
-
   constructor(
     private dataService: DataService,
     private activatedRoute: ActivatedRoute,
     private formGroupCreator: FormBuilder
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-
-    this.activatedRoute.params.subscribe(params => (this.board = params['board']));
+    this.activatedRoute.params.subscribe(
+      params => (this.board = params['board'])
+    );
 
     this.processColumns();
 
@@ -45,7 +43,6 @@ export class ItemFormComponent implements OnInit {
   }
 
   submit() {
-
     const rawValue = {
       boardId: this.itemFormGroup.get('boardId').value,
       sectionId: this.itemFormGroup.get('sectionId').value,
@@ -62,7 +59,7 @@ export class ItemFormComponent implements OnInit {
     const columns = this.dataService.getColumns(this.board);
     for (const x of columns) {
       for (const y of x.sections) {
-        this.sections.push({id: y.id, title: y.title});
+        this.sections.push({ id: y.id, title: y.title });
       }
     }
   }

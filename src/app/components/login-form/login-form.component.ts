@@ -7,19 +7,24 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
-
   @Output()
   loginEvent: EventEmitter<string> = new EventEmitter<string>();
   username: string;
   password: string;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) {}
 
   login() {
-    this.authenticationService.login(this.username, this.password)
-      .subscribe(
-        response => { if (response.success) this.loginEvent.emit(this.username); },
-        error => console.log(`LoginFormComponent.login() - could not login: ${this.username}`)
-      );
+    this.authenticationService.login(this.username, this.password).subscribe(
+      response => {
+        if (response.success) {
+          this.loginEvent.emit(this.username);
+        }
+      },
+      error =>
+        console.log(
+          `LoginFormComponent.login() - could not login: ${this.username}`
+        )
+    );
   }
 }

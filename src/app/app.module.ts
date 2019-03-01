@@ -15,8 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
-import { ReactiveFormsModule } from "@angular/forms";
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,19 @@ import { ReactiveFormsModule } from "@angular/forms";
     LoginFormComponent,
     RegistrationFormComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ReactiveFormsModule],
-  providers: [RestClientService, DataService, AuthenticationService, HttpClient],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    RestClientService,
+    DataService,
+    AuthenticationService,
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
