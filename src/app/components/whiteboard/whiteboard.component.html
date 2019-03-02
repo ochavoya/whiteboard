@@ -5,34 +5,16 @@
         <h2><i>XP-Whiteboard</i></h2>
       </div>
       <span *ngIf="!token"><a (click)="showRegistrationForm()">register</a></span>
-      <button
-        type="button"
-        class="btn btn-danger navbar-btn"
-        *ngFor="let x of headlines"
-        (click)="selectBoard(x.id)"
-      >
+      <button type="button" class="btn btn-danger navbar-btn" *ngFor="let x of headlines" (click)="selectBoard(x.id)">
         {{ x.title }}
       </button>
-      <button
-        *ngIf="board && token"
-        type="button"
-        class="btn btn-danger navbar-btn"
-        [routerLink]="getCreatePath()"
-      >
+      <button *ngIf="board && token" type="button" class="btn btn-danger navbar-btn" [routerLink]="getCreatePath()">
         Create Item
       </button>
-      <button
-        *ngIf="board && token"
-        type="button"
-        class="btn btn-danger navbar-btn"
-        (click)="logout()"
-      >
+      <button *ngIf="board && token" type="button" class="btn btn-danger navbar-btn" (click)="logout()">
         logout
       </button>
-      <app-login-form
-        *ngIf="token == ''"
-        (loginEvent)="setToken($event)"
-      ></app-login-form>
+      <app-login-form *ngIf="token == ''" (loginEvent)="setToken($event)"></app-login-form>
     </div>
   </nav>
 </div>
@@ -51,5 +33,5 @@
   </div>
 </div>
 <div class="container" *ngIf="registration && !token">
-   <app-registration-form></app-registration-form>
+  <app-registration-form></app-registration-form>
 </div>

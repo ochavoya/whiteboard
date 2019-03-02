@@ -12,21 +12,11 @@
   <div class="row">
     <div class="col-md-3">Password</div>
     <div class="col-md-3">
-      <input
-        [(ngModel)]="password"
-        type="password"
-        placeholder="password"
-        required
-      />
+      <input [(ngModel)]="password" type="password" placeholder="password" required />
     </div>
     <div class="col-md-3">Confirm</div>
     <div class="col-md-3">
-      <input
-        [(ngModel)]="confirmPassword"
-        type="password"
-        placeholder="confirm"
-        required
-      />
+      <input [(ngModel)]="confirmPassword" type="password" placeholder="confirm" required />
     </div>
   </div>
   <div class="row">
@@ -34,11 +24,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-3"></div>
     <div class="col-md-3">
-      <button
-        type="button"
-        class="btn btn-danger navbar-btn"
-        (click)="register()"
-      >
+      <button type="button" class="btn btn-danger navbar-btn" (click)="register()">
         register
       </button>
     </div>
