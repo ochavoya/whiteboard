@@ -16,7 +16,7 @@ export class ItemFormComponent implements OnInit {
   sectionId = 0;
   title: string;
   detail: string;
-  expiresOn: string;
+  expiresOn: Date;
 
   constructor(
     private dataService: DataService,
@@ -38,7 +38,7 @@ export class ItemFormComponent implements OnInit {
       sectionId: [0, required],
       title: ['', required],
       detail: ['', required],
-      expiresOn: ['', required]
+      expiresOn: [ new Date(), required]
     });
   }
 
