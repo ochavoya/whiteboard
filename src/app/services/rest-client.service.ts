@@ -58,7 +58,6 @@ export class RestClientService implements OnInit {
     path = `${this.api}${path}`;
     switch (method) {
       case 'get':
-        console.log(path);
         return this.http
           .get(path, { headers: this.headers })
           .pipe(share()) as Observable<RestMessage<any>>;
