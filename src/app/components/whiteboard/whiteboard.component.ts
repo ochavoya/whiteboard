@@ -1,7 +1,8 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, SimpleChange } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { WhiteBoardHeadline, WhiteBoardColumn } from '../../model/whiteboard';
+import { DeepStateGopherService } from 'src/app/deep-state-gopher.service';
 
 @Component({
   selector: 'app-whiteboard',
@@ -17,16 +18,24 @@ export class WhiteboardComponent implements OnInit, OnChanges {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private dataService: DataService
+    private dataService: DataService,
+    private deepStateGopher: DeepStateGopherService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.authenticationService.resetTimeout();
+    for( let propName in changes) {
+      this.authenticationService.resetTimeout();
+      break;  
+    }
   }
 
   ngOnInit() {
     this.headlines = this.dataService.getHeadLines();
     this.token = this.authenticationService.token;
+    if( this.deepStateGopher.getRecord('boardIndex') ) {
+      this.board = this.deepStateGopher.getRecord('boardIndex');
+      this.selectBoard(this.board);
+    }
   }
 
   setToken(token) {
@@ -48,6 +57,7 @@ export class WhiteboardComponent implements OnInit, OnChanges {
   }
 
   selectBoard(index) {
+    this.deepStateGopher.setRecord('boardIndex', index);
     this.board = index;
     this.columns = this.dataService.getColumns(index);
   }

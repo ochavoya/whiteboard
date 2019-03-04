@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { DeepStateGopherService } from './deep-state-gopher.service';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { RegistrationFormComponent } from './components/registration-form/regist
     RestClientService,
     DataService,
     AuthenticationService,
-    HttpClient
+    HttpClient,
+    DeepStateGopherService
   ],
   bootstrap: [AppComponent]
 })
