@@ -20,19 +20,19 @@ export class WhiteboardComponent implements OnInit, OnChanges {
     private authenticationService: AuthenticationService,
     private dataService: DataService,
     private deepStateGopher: DeepStateGopherService
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    for( let propName in changes) {
+    for (const propName in changes) {
       this.authenticationService.resetTimeout();
-      break;  
+      break;
     }
   }
 
   ngOnInit() {
     this.headlines = this.dataService.getHeadLines();
     this.token = this.authenticationService.token;
-    if( this.deepStateGopher.getRecord('boardIndex') ) {
+    if (this.deepStateGopher.getRecord('boardIndex')) {
       this.board = this.deepStateGopher.getRecord('boardIndex');
       this.selectBoard(this.board);
     }
