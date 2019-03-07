@@ -17,32 +17,25 @@ const logisticsSections: WhiteBoardSection[] = [
     detail: 'i.e. \'Personal Time Out\'',
     items: []
   },
-  {
-    id: 5,
-    columnId: LOGISTICS,
-    title: 'Rituals',
-    detail: 'Our way of life...',
-    items: []
-  }
 ];
 
 // sections 11-20
 const HELP = 20;
 const helpSections = [
+    {
+      id: 11,
+      columnId: HELP,
+      title: 'Rituals',
+      detail: 'Our way of life...',
+      items: []
+    },
   {
-    id: 11,
+    id: 15,
     columnId: HELP,
     title: 'Help',
     detail: 'What can we do to help you?',
     items: []
   },
-  {
-    id: 15,
-    columnId: HELP,
-    title: 'Resources',
-    detail: 'Sources of relevant information',
-    items: []
-  }
 ];
 
 // sections 21-30
@@ -58,18 +51,10 @@ const newsSections = [
   {
     id: 24,
     columnId: THE_NEWS,
-    title: 'Finances',
-    detail: 'Just in case that you are rich...',
+    title: 'Interesting',
+    detail: 'Just in case that you want to know...',
     items: []
   },
-
-  {
-    id: 27,
-    columnId: THE_NEWS,
-    title: 'Politics',
-    detail: 'What\'s new in the NWO?',
-    items: []
-  }
 ];
 
 // sections 31-40
@@ -144,8 +129,7 @@ export class Configuration {
       id: STAND_UP,
       title: 'stand up',
       detail: ''
-    },
-    {
+    }, {
       id: RETRO,
       title: 'retro',
       detail: ''
@@ -163,17 +147,14 @@ export class Configuration {
       title: 'LOGISTICS',
       detail: 'Things we need to know and let others know ahead of time.',
       sections: logisticsSections
-    },
-    {
+    }, {
       id: HELP,
       whiteBoardId: STAND_UP,
       icon: null,
       title: 'GROWTH',
       detail: 'Things we need to do to improve the way we do our job.',
       sections: helpSections
-    },
-
-    {
+    }, {
       id: THE_NEWS,
       whiteBoardId: STAND_UP,
       icon: null,
@@ -181,9 +162,7 @@ export class Configuration {
       detail:
         'Things that happen \'out there\' and we might want to know, or bring to others\' attention.',
       sections: newsSections
-    },
-
-    {
+    }, {
       id: THE_FUTURE,
       whiteBoardId: STAND_UP,
       icon: null,
@@ -203,26 +182,21 @@ export class Configuration {
       title: null,
       detail: 'What has been great!',
       sections: happyFaceSections
-    },
-
-    {
+    }, {
       id: NEUTRAL_FACE,
       whiteBoardId: RETRO,
       icon: 'neutral.jpeg',
       title: null,
       detail: 'What has been \'just fine\'',
       sections: neutralFaceSections
-    },
-
-    {
+    }, {
       id: SAD_FACE,
       whiteBoardId: RETRO,
       icon: 'sad.jpeg',
       title: null,
       detail: 'What has not been cool, OK? >:(',
       sections: sadFaceSections
-    },
-    {
+    }, {
       id: ACTIONS,
       whiteBoardId: RETRO,
       icon: null,
