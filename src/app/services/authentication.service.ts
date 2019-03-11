@@ -68,6 +68,9 @@ export class AuthenticationService {
           this.token = response.data;
           this.setTimeout();
         }
+        else {
+          console.log(`Bad username or password ${username}`);
+        }
       },
       err =>
         console.log(
