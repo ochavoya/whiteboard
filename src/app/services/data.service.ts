@@ -54,14 +54,17 @@ export class DataService {
         Configuration.columns.forEach(x =>
           x.sections.forEach(y => (map[y.id] = y.items))
         );
-        result.data.forEach(x =>
-          map[x.sectionId].push({
-            boardId: x.boardId,
-            sectionId: x.sectionId,
-            title: x.title,
-            detail: x.detail,
-            expiresOn: x.expiresOn
-          })
+        result.data.forEach(x => {
+          if ( map[x.sectionId] ) {
+            map[x.sectionId].push({
+              boardId: x.boardId,
+              sectionId: x.sectionId,
+              title: x.title,
+              detail: x.detail,
+              expiresOn: x.expiresOn
+            });
+          }
+        }
         );
       },
       error => console.log('Could not load items from the database')
