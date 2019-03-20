@@ -3,6 +3,7 @@ import { RestClientService } from './rest-client.service';
 import { Configuration } from '../config';
 import { WhiteBoardItem, WhiteBoardHeadline } from '../model/whiteboard';
 import { AuthenticationService } from './authentication.service';
+import { take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -44,11 +45,14 @@ export class DataService {
 
     this.restService
       .create({ token: this.authenticationService.token, ...rawValue })
+      .pipe(take(1))
       .subscribe(result => console.log(result), error => console.log(error));
   }
 
   load() {
-    this.restService.load().subscribe(
+    this.restService.load()
+    .pipe(take(1))
+    .subscribe(
       result => {
         const map: WhiteBoardItem[][] = [];
         Configuration.columns.forEach(x =>
