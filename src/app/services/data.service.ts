@@ -11,7 +11,7 @@ export class DataService {
   constructor(
     private restService: RestClientService,
     private authenticationService: AuthenticationService
-  ) {}
+  ) { }
 
   getHeadLines(): WhiteBoardHeadline[] {
     return Configuration.headlines;
@@ -51,27 +51,27 @@ export class DataService {
 
   load() {
     this.restService.load()
-    .pipe(take(1))
-    .subscribe(
-      result => {
-        const map: WhiteBoardItem[][] = [];
-        Configuration.columns.forEach(x =>
-          x.sections.forEach(y => (map[y.id] = y.items))
-        );
-        result.data.forEach(x => {
-          if ( map[x.sectionId] ) {
-            map[x.sectionId].push({
-              boardId: x.boardId,
-              sectionId: x.sectionId,
-              title: x.title,
-              detail: x.detail,
-              expiresOn: x.expiresOn
-            });
+      .pipe(take(1))
+      .subscribe(
+        result => {
+          const map: WhiteBoardItem[][] = [];
+          Configuration.columns.forEach(x =>
+            x.sections.forEach(y => (map[y.id] = y.items))
+          );
+          result.data.forEach(x => {
+            if (map[x.sectionId]) {
+              map[x.sectionId].push({
+                boardId: x.boardId,
+                sectionId: x.sectionId,
+                title: x.title,
+                detail: x.detail,
+                expiresOn: x.expiresOn
+              });
+            }
           }
-        }
-        );
-      },
-      error => console.log('Could not load items from the database')
-    );
+          );
+        },
+        error => console.log('Could not load items from the database')
+      );
   }
 }
