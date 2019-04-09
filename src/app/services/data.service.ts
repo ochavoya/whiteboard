@@ -3,6 +3,7 @@ import { RestClientService } from './rest-client.service';
 import { Configuration } from '../config';
 import { WhiteBoardItem, WhiteBoardHeadline } from '../model/whiteboard';
 import { AuthenticationService } from './authentication.service';
+import { take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class DataService {
   constructor(
     private restService: RestClientService,
     private authenticationService: AuthenticationService
-  ) {}
+  ) { }
 
   getHeadLines(): WhiteBoardHeadline[] {
     return Configuration.headlines;
@@ -44,30 +45,33 @@ export class DataService {
 
     this.restService
       .create({ token: this.authenticationService.token, ...rawValue })
+      .pipe(take(1))
       .subscribe(result => console.log(result), error => console.log(error));
   }
 
   load() {
-    this.restService.load().subscribe(
-      result => {
-        const map: WhiteBoardItem[][] = [];
-        Configuration.columns.forEach(x =>
-          x.sections.forEach(y => (map[y.id] = y.items))
-        );
-        result.data.forEach(x => {
-          if ( map[x.sectionId] ) {
-            map[x.sectionId].push({
-              boardId: x.boardId,
-              sectionId: x.sectionId,
-              title: x.title,
-              detail: x.detail,
-              expiresOn: x.expiresOn
-            });
+    this.restService.load()
+      .pipe(take(1))
+      .subscribe(
+        result => {
+          const map: WhiteBoardItem[][] = [];
+          Configuration.columns.forEach(x =>
+            x.sections.forEach(y => (map[y.id] = y.items))
+          );
+          result.data.forEach(x => {
+            if (map[x.sectionId]) {
+              map[x.sectionId].push({
+                boardId: x.boardId,
+                sectionId: x.sectionId,
+                title: x.title,
+                detail: x.detail,
+                expiresOn: x.expiresOn
+              });
+            }
           }
-        }
-        );
-      },
-      error => console.log('Could not load items from the database')
-    );
+          );
+        },
+        error => console.log('Could not load items from the database')
+      );
   }
 }

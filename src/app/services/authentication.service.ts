@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestClientService } from './rest-client.service';
 import { Observable } from 'rxjs';
 import { RestMessage } from '../model/whiteboard';
+import { take } from 'rxjs/operators';
 
 const minutes = 5;
 
@@ -26,10 +27,9 @@ export class AuthenticationService {
     name: string,
     username: string,
     password: string
-  ): Observable<RestMessage<string>> {
+  ): void {
     const dto = { name: name, username: username, password: password };
-    const value = this.restService.register(dto);
-    value.subscribe(
+    this.restService.register(dto).pipe(take(1)).subscribe(
       response => {
         if (response.success) {
           this.login(username, password);
@@ -40,7 +40,6 @@ export class AuthenticationService {
           `AuthenticationService.register() - Error while registering user: ${username}`
         )
     );
-    return value;
   }
 
   private setTimeout() {
@@ -61,7 +60,7 @@ export class AuthenticationService {
       username: username,
       password: password
     });
-    value.subscribe(
+    value.pipe(take(1)).subscribe(
       response => {
         if (response.success) {
           this.username = username;
